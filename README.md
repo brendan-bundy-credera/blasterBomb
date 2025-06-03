@@ -5,9 +5,17 @@ Credera is building a React web application for the front-end of the e-Commerce 
 
 # How to Run the React App
 
-# (1) Run `npm update`
+# (1) Navigate to correct folder
 
-# (2) Run `npm build`
+Navigate to the folder group-project-ui
+
+# (2) Run `npm update`
+
+# (3) Set environement variables
+
+`export NODE_OPTIONS=--openssl-legacy-provider`
+
+# (3) Run `npm run build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -15,7 +23,7 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-# (3) Run `npm start`
+# (4) Run `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
