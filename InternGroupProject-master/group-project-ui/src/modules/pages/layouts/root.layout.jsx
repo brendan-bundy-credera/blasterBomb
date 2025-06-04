@@ -4,6 +4,7 @@ import rootRoutes from '../pages.config';
 import './root.layout.css'; // Import the CSS file
 
 export const RootLayout = () => (
+  
   <Router>
     {/* <nav className="navbar"> */}
       <ul>
