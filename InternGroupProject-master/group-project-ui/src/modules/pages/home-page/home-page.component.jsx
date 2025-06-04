@@ -53,7 +53,7 @@ export const HomePageComponent = () => {
         </Typography>
         {/* Image placeholder */}
         <Box display="flex" justifyContent="center" my={2}>
-          <img src={logo} alt="Hot Sauce" style={{ width: 180, height: 180, objectFit: 'contain', borderRadius: '12px', border: '4px solid var(--main)' }} />
+          <img src={logo} alt="Hot Sauce" style={{ width: 180, height: 180, objectFit: 'contain', borderRadius: '12px' }} />
         </Box>
         {/* Product cards */}
         <Box display="grid" gridTemplateColumns="repeat(2, 1fr)" gap={16} justifyContent="center" style={{ paddingLeft: '16px', paddingRight: '16px' }}  sx={{
