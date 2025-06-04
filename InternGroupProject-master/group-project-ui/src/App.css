@@ -1,3 +1,25 @@
+/*
+  Updated color palette for new branding:
+  Pumpkin (main): #FA8334
+  Asparagus (accent): #60935D
+  Jet: #2B2C28
+  Timberwolf: #E4DFDA
+  Cinnabar: #E55934
+*/
+:root {
+  --main: #FA8334; /* Pumpkin */
+  --accent: #60935D; /* Asparagus */
+  --jet: #2B2C28;
+  --timberwolf: #E4DFDA;
+  --cinnabar: #E55934;
+}
+body {
+  background: var(--timberwolf);
+  color: var(--jet);
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  margin: 0;
+}
+
 .App {
   text-align: center;
 }
@@ -14,18 +36,62 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background: linear-gradient(90deg, var(--main) 60%, var(--accent) 100%);
+  color: var(--timberwolf);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  box-shadow: 0 4px 24px rgba(43,44,40,0.08);
 }
 
 .App-link {
-  color: #61dafb;
+  color: var(--cinnabar);
+  text-decoration: underline;
+}
+
+button, .MuiButton-root {
+  background: var(--main);
+  color: var(--timberwolf);
+  border: none;
+  border-radius: 6px;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 600;
+  margin: 0.5em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+button:hover, .MuiButton-root:hover {
+  background: var(--accent);
+}
+
+input[type="text"] {
+  border: 2px solid var(--main);
+  border-radius: 4px;
+  padding: 0.5em;
+  font-size: 1em;
+  margin: 1em 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+li {
+  background: var(--jet);
+  color: var(--timberwolf);
+  margin: 0.5em 0;
+  padding: 1em;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+li:hover {
+  background: var(--main);
+  color: var(--jet);
 }
 
 @keyframes App-logo-spin {
