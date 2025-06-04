@@ -4,9 +4,8 @@ import rootRoutes from '../pages.config';
 import './root.layout.css'; // Import the CSS file
 
 export const RootLayout = () => (
-  
   <Router>
-    {/* <nav className="navbar"> */}
+    <nav className="navbar">
       <ul>
         {rootRoutes.filter(route => !!route.linkText).map((route, index) => (
           <li key={index}>
@@ -14,7 +13,7 @@ export const RootLayout = () => (
           </li>
         ))}
       </ul>
-    {/* </nav> */}
+    </nav>
     <Switch>
       {rootRoutes.map((route, index) => (
         <Route exact={route.exact} key={index} path={route.path} component={route.routeComponent} />

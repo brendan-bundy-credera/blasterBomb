@@ -45,28 +45,37 @@ const ProductsPageComponent = () => {
   };
 
   return (
-    <div>
-      <h1>Products</h1>
+    <div style={{ maxWidth: 700, margin: '2em auto', background: 'var(--timberwolf)', borderRadius: '16px', boxShadow: '0 4px 24px rgba(43,44,40,0.08)', padding: '2em' }}>
+      <h1 style={{ color: 'var(--asparagus)', fontWeight: 700, letterSpacing: '1px' }}>Products</h1>
       <input
         type="text"
         placeholder="Search products..."
         value={searchTerm}
         onChange={handleSearchChange}
+        style={{ width: '100%', marginBottom: '1em' }}
       />
       {selectedProduct ? (
-        <div>
-          <h2>{selectedProduct.name}</h2>
+        <div style={{ textAlign: 'left' }}>
+          {/* Image placeholder for product */}
+          <div style={{ width: 220, height: 220, background: 'var(--jet)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--timberwolf)', fontSize: 28, fontWeight: 600, marginBottom: 24 }}>
+            Product Image
+          </div>
+          <h2 style={{ color: 'var(--pumpkin)' }}>{selectedProduct.name}</h2>
           <p>{selectedProduct.description}</p>
-          <p>Price: {selectedProduct.price}</p>
-          <p>Heat Level: {selectedProduct.spice}</p>
+          <p><b>Price:</b> {selectedProduct.price}</p>
+          <p><b>Heat Level:</b> {selectedProduct.spice}</p>
           <button onClick={addToCart}>Add to Cart</button>
-          <button onClick={handleBackToList}>Back to Products</button>
+          <button onClick={handleBackToList} style={{ background: 'var(--cinnabar)' }}>Back to Products</button>
         </div>
       ) : (
         <ul>
           {filteredProducts.map(product => (
-            <li key={product.id} onClick={() => handleProductClick(product)}>
-              {product.name} - {product.price}
+            <li key={product.id} onClick={() => handleProductClick(product)} style={{ display: 'flex', alignItems: 'center', gap: '1em' }}>
+              {/* Small image placeholder */}
+              <div style={{ width: 48, height: 48, background: 'var(--jet)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--timberwolf)', fontSize: 16, fontWeight: 600 }}>
+                Img
+              </div>
+              <span style={{ flex: 1 }}>{product.name} - {product.price}</span>
             </li>
           ))}
         </ul>

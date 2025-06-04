@@ -29,3 +29,39 @@
   color: #ddd;
 } */
 
+
+
+/* Professional, modern navbar using color palette */
+.navbar {
+  background: var(--jet);
+  padding: 1em 0;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(43,44,40,0.08);
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 2em;
+}
+
+.navbar li {
+  margin: 0;
+}
+
+.navbar a {
+  color: var(--timberwolf);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1em;
+  letter-spacing: 0.5px;
+  transition: color 0.2s;
+}
+
+.navbar a:hover {
+  color: var(--pumpkin);
+}
+
