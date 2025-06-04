@@ -36,7 +36,8 @@
   background: var(--jet);
   padding: 1em 0;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
   box-shadow: 0 2px 8px rgba(43,44,40,0.08);
 }
 

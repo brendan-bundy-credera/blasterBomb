@@ -2,7 +2,12 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { retrieveCart } from '../../cart/retrieve-cart/retrieve-cart.slice';
 import { RequestStatus } from '../../common/redux/redux.constants';
-import { Button, CircularProgress, Typography, Container, Box } from '@material-ui/core';
+import { Typography, Container, Box } from '@material-ui/core';
+import heatwave_havoc from '../../../assets/heatwave_havoc.png'
+import chili_charge from '../../../assets/chili_charge.png'
+import flame_frenzy from '../../../assets/flame_frenzy.png'
+import zesty_zing from '../../../assets/zesty_zing.png'
+import logo from '../../../assets/blaster_bomb_logo.png'
 
 export const HomePageComponent = () => {
   const dispatch = useDispatch();
@@ -15,12 +20,12 @@ export const HomePageComponent = () => {
   return (
     <Container maxWidth="sm" style={{ background: 'var(--timberwolf)', borderRadius: '16px', boxShadow: '0 4px 24px rgba(43,44,40,0.08)', padding: '2em', marginTop: '2em' }}>
       <Box my={4}>
-        <Typography variant="h3" component="h1" gutterBottom style={{ color: 'var(--main)', fontWeight: 700, letterSpacing: '1px' }}>
+        <Typography variant="h3" component="h1" style={{ color: 'var(--main)', fontWeight: 700, letterSpacing: '1px', textAlign: 'center', whiteSpace: 'nowrap' }}>
           Blaster Bomb Hot Sauce
         </Typography>
         {/* Image placeholder */}
         <Box display="flex" justifyContent="center" my={2}>
-          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="Hot Sauce" style={{ width: 180, height: 180, objectFit: 'cover', borderRadius: '12px', border: '4px solid var(--main)' }} />
+          <img src={logo} alt="Hot Sauce" style={{ width: 180, height: 180, objectFit: 'contain', borderRadius: '12px' }} />
         </Box>
         {/* Product cards */}
         <Box display="flex" flexWrap="wrap" justifyContent="center" style={{ gap: 16 }}>
@@ -31,7 +36,7 @@ export const HomePageComponent = () => {
               price: '$10.50',
               description: 'A fiery, heat bomb that is our hottest sauce--guaranteed to bring you tears.',
               spice: 'Blazing',
-              img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80',
+              img: heatwave_havoc,
             },
             {
               id: 2,
@@ -39,7 +44,7 @@ export const HomePageComponent = () => {
               price: '$9.70',
               description: 'A medium level chili-infused sauce that is sure to bring some heat!',
               spice: 'Hot',
-              img: 'https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80',
+              img: chili_charge,
             },
             {
               id: 3,
@@ -47,7 +52,7 @@ export const HomePageComponent = () => {
               price: '$9.70',
               description: 'A fun, savory hot sauce to make your mouth tingle.',
               spice: 'Mild',
-              img: 'https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80',
+              img: flame_frenzy,
             },
             {
               id: 4,
@@ -55,11 +60,11 @@ export const HomePageComponent = () => {
               price: '$10.20',
               description: 'Our version of sweet and tangy with some ZING!',
               spice: 'Mild',
-              img: 'https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=400&q=80',
+              img: zesty_zing,
             },
           ].map(product => (
-            <Box key={product.id} style={{ background: 'var(--jet)', color: 'var(--timberwolf)', borderRadius: 12, margin: 8, width: 220, boxShadow: '0 2px 8px rgba(43,44,40,0.08)', padding: 16, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <img src={product.img} alt={product.name} style={{ width: 120, height: 120, objectFit: 'cover', borderRadius: 8, marginBottom: 12, border: '2px solid var(--main)' }} />
+            <Box key={product.id} style={{ background: 'var(--jet)', color: 'var(--timberwolf)', borderRadius: 12, margin: 8, width: 420, boxShadow: '0 2px 8px rgba(43,44,40,0.08)', padding: 16, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <img src={product.img} alt={product.name} style={{ background: 'var(--timberwolf', width: 240, height: 240, objectFit: 'contain', borderRadius: 8, marginBottom: 12, border: '2px solid var(--main)' }} />
               <Typography variant="h6" style={{ color: 'var(--main)', fontWeight: 600 }}>{product.name}</Typography>
               <Typography variant="body2" style={{ margin: '8px 0', minHeight: 40 }}>{product.description}</Typography>
               <Typography variant="body2" style={{ color: 'var(--main)', fontWeight: 500 }}>Heat Level: {product.spice}</Typography>
@@ -67,30 +72,6 @@ export const HomePageComponent = () => {
             </Box>
           ))}
         </Box>
-        {retrieveCartState.status === RequestStatus.LOADING ? (
-          <Box display="flex" justifyContent="center" my={2}>
-            <CircularProgress data-testid='loading-spinner' />
-          </Box>
-        ) : (
-          <Box>
-            <Button 
-              variant="contained" 
-              color="primary" 
-              style={{ background: 'var(--asparagus)', color: 'var(--timberwolf)' }}
-              onClick={() => dispatch(retrieveCart(1))}
-            >
-              Retrieve Cart
-            </Button>
-            <Box mt={2}>
-              <Typography variant="h6" style={{ color: 'var(--jet)' }}>
-                Current Cart ID: {retrieveCartState?.response?.cartId || 'N/A'}
-              </Typography>
-              <Typography variant="body1" style={{ color: 'var(--jet)' }}>
-                {JSON.stringify(retrieveCartState?.response, null, 2)}
-              </Typography>
-            </Box>
-          </Box>
-        )}
       </Box>
     </Container>
   );
