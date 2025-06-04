@@ -15,7 +15,7 @@ export const HomePageComponent = () => {
   return (
     <Container maxWidth="sm" style={{ background: 'var(--timberwolf)', borderRadius: '16px', boxShadow: '0 4px 24px rgba(43,44,40,0.08)', padding: '2em', marginTop: '2em' }}>
       <Box my={4}>
-        <Typography variant="h3" component="h1" gutterBottom style={{ color: 'var(--main)', fontWeight: 700, letterSpacing: '1px' }}>
+        <Typography variant="h3" component="h1" style={{ color: 'var(--main)', fontWeight: 700, letterSpacing: '1px', textAlign: 'center', whiteSpace: 'nowrap' }}>
           Blaster Bomb Hot Sauce
         </Typography>
         {/* Image placeholder */}
