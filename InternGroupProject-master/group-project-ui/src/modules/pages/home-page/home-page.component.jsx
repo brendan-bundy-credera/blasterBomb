@@ -8,6 +8,7 @@ import chili_charge from '../../../assets/chili_charge.png'
 import flame_frenzy from '../../../assets/flame_frenzy.png'
 import zesty_zing from '../../../assets/zesty_zing.png'
 import logo from '../../../assets/blaster_bomb_logo.png'
+// import { styled } from '@mui/system';
 
 export const HomePageComponent = () => {
   const dispatch = useDispatch();
@@ -17,10 +18,37 @@ export const HomePageComponent = () => {
     dispatch(retrieveCart(1));
   }, [dispatch]);
 
+  // // Styled component for responsive typography
+  // const ResponsiveTypography = styled(Typography)(({ theme }) => ({
+  //   color: 'var(--main)',
+  //   fontWeight: 700,
+  //   letterSpacing: '1px',
+  //   textAlign: 'center',
+  //   whiteSpace: 'nowrap',
+  //   fontSize: '3rem', // Default size
+  //   [theme.breakpoints.down('lg')]: {
+  //     fontSize: '2.5rem',
+  //   },
+  //   [theme.breakpoints.down('md')]: {
+  //     fontSize: '2rem',
+  //   },
+  //   [theme.breakpoints.down('sm')]: {
+  //     fontSize: '1.5rem',
+  //   },
+  // }));
   return (
     <Container maxWidth="sm" style={{ background: 'var(--timberwolf)', borderRadius: '16px', boxShadow: '0 4px 24px rgba(43,44,40,0.08)', padding: '2em', marginTop: '2em' }}>
       <Box my={4}>
-        <Typography variant="h3" component="h1" style={{ color: 'var(--main)', fontWeight: 700, letterSpacing: '1px', textAlign: 'center', whiteSpace: 'nowrap' }}>
+        <Typography variant="h3" component="h1" style={{ color: 'var(--main)', fontWeight: 700, letterSpacing: '1px', textAlign: 'center', whiteSpace: 'nowrap' }}
+          sx={{
+            fontSize: {
+              xs: '1.5rem', // Small screens
+              sm: '2rem',   // Medium screens
+              md: '2.5rem', // Large screens
+              lg: '3rem',   // Extra large screens
+            },
+          }}
+        >
           Blaster Bomb Hot Sauce
         </Typography>
         {/* Image placeholder */}
@@ -28,7 +56,16 @@ export const HomePageComponent = () => {
           <img src={logo} alt="Hot Sauce" style={{ width: 180, height: 180, objectFit: 'contain', borderRadius: '12px', border: '4px solid var(--main)' }} />
         </Box>
         {/* Product cards */}
-        <Box display="flex" flexWrap="wrap" justifyContent="center" style={{ gap: 16 }}>
+        <Box display="grid" gridTemplateColumns="repeat(2, 1fr)" gap={16} justifyContent="center" style={{ paddingLeft: '16px', paddingRight: '16px' }}  sx={{
+            gridTemplateColumns: {
+              xs: '1fr', // Single column on small screens
+              sm: '1fr',
+              md: 'repeat(2, 1fr)', // Two columns on medium screens and above
+            },
+            gap: 2,
+            paddingLeft: '16px',
+            paddingRight: '16px',
+          }} >
           { [
             {
               id: 1,
