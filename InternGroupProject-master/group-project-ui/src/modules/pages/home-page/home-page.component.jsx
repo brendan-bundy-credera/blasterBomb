@@ -2,8 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { retrieveCart } from '../../cart/retrieve-cart/retrieve-cart.slice';
 import { RequestStatus } from '../../common/redux/redux.constants';
-import { CircularProgress, Typography, Container, Box } from '@material-ui/core';
-import { Button, CircularProgress, Typography, Container, Box } from '@material-ui/core';
+import { Typography, Container, Box } from '@material-ui/core';
 import heatwave_havoc from '../../../assets/heatwave_havoc.png'
 import chili_charge from '../../../assets/chili_charge.png'
 import flame_frenzy from '../../../assets/flame_frenzy.png'
