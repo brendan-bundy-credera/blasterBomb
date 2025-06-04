@@ -32,6 +32,13 @@ const ProductsPageComponent = () => {
   const handleProductClick = (product) => {
     setSelectedProduct(product);
   };
+  
+  const addToCart = () => {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push(selectedProduct);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(`${selectedProduct.name} added to cart!`);
+  };
 
   const handleBackToList = () => {
     setSelectedProduct(null);
@@ -52,6 +59,7 @@ const ProductsPageComponent = () => {
           <p>{selectedProduct.description}</p>
           <p>Price: {selectedProduct.price}</p>
           <p>Heat Level: {selectedProduct.spice}</p>
+          <button onClick={addToCart}>Add to Cart</button>
           <button onClick={handleBackToList}>Back to Products</button>
         </div>
       ) : (
