@@ -19,6 +19,7 @@ const ProductsPageComponent = () => {
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
    const [searchTerm, setSearchTerm] = useState(''); 
+   const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     // Simulate data fetching
@@ -42,9 +43,9 @@ const ProductsPageComponent = () => {
     // If already in cart, increase quantity
     const existing = cart.find(item => item.id === selectedProduct.id);
     if (existing) {
-      existing.quantity = (existing.quantity || 1) + 1;
+      existing.quantity = (existing.quantity || 1) + quantity;
     } else {
-      cart.push({ ...selectedProduct, quantity: 1 });
+      cart.push({ ...selectedProduct, quantity });
     }
     localStorage.setItem('cart', JSON.stringify(cart));
     alert(`${selectedProduct.name} added to cart!`);
@@ -72,6 +73,10 @@ const ProductsPageComponent = () => {
           <p>{selectedProduct.description}</p>
           <p><b>Price:</b> {selectedProduct.price}</p>
           <p><b>Heat Level:</b> {selectedProduct.spice}</p>
+          <div style={{ margin: '12px 0' }}>
+            <label htmlFor="quantity" style={{ marginRight: 8 }}>Quantity:</label>
+            <input id="quantity" type="number" min="1" value={quantity} onChange={e => setQuantity(Number(e.target.value))} style={{ width: 60, padding: 4, borderRadius: 4, border: '1px solid var(--main)' }} />
+          </div>
           <button onClick={addToCart}>Add to Cart</button>
           <button onClick={handleBackToList} style={{ background: 'var(--cinnabar)' }}>Back to Products</button>
         </div>
