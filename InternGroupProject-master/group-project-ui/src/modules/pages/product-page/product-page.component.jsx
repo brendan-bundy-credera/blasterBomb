@@ -1,5 +1,43 @@
 import React, { useState, useEffect } from 'react';
 
+// Simple notification at bottom
+const BottomNotification = ({ message, isVisible }) => {
+  if (!isVisible) return null;
+
+  return (
+    <div style={{
+      position: 'fixed',
+      bottom: '20px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      backgroundColor: '#60935D',
+      color: 'white',
+      padding: '12px 24px',
+      borderRadius: '8px',
+      boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
+      zIndex: 1000
+    }}>
+      {message}
+    </div>
+  );
+};
+
+// Simple hook for notification
+const useNotification = () => {
+  const [notification, setNotification] = useState({ isVisible: false, message: '' });
+
+  const showNotification = (message) => {
+    setNotification({ isVisible: true, message });
+    
+    // Auto-hide after 3 seconds
+    setTimeout(() => {
+      setNotification({ isVisible: false, message: '' });
+    }, 3000);
+  };
+
+  return { notification, showNotification };
+};
+
 // Placeholder data for products (can be replaced with actual data fetching)
 const sampleProducts = [
   { id: 1, name: 'Heatwave Havoc', price: '$10.50', description: 'A fiery, heat bomb that is our hottest sauce--guaranteed to bring you tears.', spice: 'Blazing', img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80' },
@@ -13,13 +51,16 @@ const sampleProducts = [
 ];
 
 const ProductsPageComponent = () => {
-    useEffect(() => {
+  const { notification, showNotification } = useNotification();
+  
+  useEffect(() => {
     console.log("ProductsPageComponent mounted");
   }, []);
+  
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
-   const [searchTerm, setSearchTerm] = useState(''); 
-   const [quantity, setQuantity] = useState(1);
+  const [searchTerm, setSearchTerm] = useState(''); 
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     // Simulate data fetching
@@ -48,7 +89,7 @@ const ProductsPageComponent = () => {
       cart.push({ ...selectedProduct, quantity });
     }
     localStorage.setItem('cart', JSON.stringify(cart));
-    alert(`${selectedProduct.name} added to cart!`);
+    showNotification('Added to cart!');
   };
 
   const handleBackToList = () => {
@@ -91,6 +132,12 @@ const ProductsPageComponent = () => {
           ))}
         </ul>
       )}
+      
+      {/* Simple notification at bottom */}
+      <BottomNotification 
+        message={notification.message}
+        isVisible={notification.isVisible}
+      />
     </div>
   );
 };
