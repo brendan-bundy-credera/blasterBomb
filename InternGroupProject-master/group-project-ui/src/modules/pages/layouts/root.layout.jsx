@@ -12,9 +12,11 @@ export const RootLayout = () => {
       <nav className="navbar">
         <ul>
           {rootRoutes.filter(route => !!route.linkText).map((route, index) => (
-            <li key={index}>
-              <Link to={route.path}>{route.linkText}</Link>
-            </li>
+            <Link key={index} to={route.path} style={{ textDecoration: 'none' }}>
+              <li style={{ padding: '0.5em 1em', cursor: 'pointer' }}>
+                {route.linkText}
+              </li>
+            </Link>
           ))}
         </ul>
       </nav>
