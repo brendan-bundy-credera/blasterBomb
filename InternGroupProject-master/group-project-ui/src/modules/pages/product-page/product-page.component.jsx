@@ -4,8 +4,8 @@ import React, { useState, useEffect } from 'react';
 const sampleProducts = [
   { id: 1, name: 'Heatwave Havoc', price: '$10.50', description: 'A fiery, heat bomb that is our hottest sauce--guaranteed to bring you tears.' , spice: 'Blazing'},
   { id: 2, name: 'Chili Charge', price: '$9.70', description: 'A medium level chili-infused sauce that is sure to bring some heat! ', spice: 'Hot' },
-  { id: 3, name: 'Flame Frenzy', price: '9.70', description: 'A fun, savory hot sauce to make your mouth tingle.', spice: 'Mild' },
-  { id: 4, name: 'Zesty Zing', price: '10.20', description: 'Our version of sweet and tangy with some ZING!', spice: 'Mild'}
+  { id: 3, name: 'Flame Frenzy', price: '$9.70', description: 'A fun, savory hot sauce to make your mouth tingle.', spice: 'Mild' },
+  { id: 4, name: 'Zesty Zing', price: '$10.20', description: 'Our version of sweet and tangy with some ZING!', spice: 'Mild'}
 ];
 
 const ProductsPageComponent = () => {
