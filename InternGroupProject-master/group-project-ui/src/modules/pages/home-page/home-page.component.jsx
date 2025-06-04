@@ -25,7 +25,7 @@ export const HomePageComponent = () => {
         </Typography>
         {/* Image placeholder */}
         <Box display="flex" justifyContent="center" my={2}>
-          <img src={logo} alt="Hot Sauce" style={{ width: 180, height: 180, objectFit: 'contain', borderRadius: '12px', border: '4px solid var(--main)' }} />
+          <img src={logo} alt="Hot Sauce" style={{ width: 180, height: 180, objectFit: 'contain', borderRadius: '12px' }} />
         </Box>
         {/* Product cards */}
         <Box display="flex" flexWrap="wrap" justifyContent="center" style={{ gap: 16 }}>
