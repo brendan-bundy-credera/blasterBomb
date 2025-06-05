@@ -45,14 +45,70 @@ const useNotification = () => {
 
 // Placeholder data for products (can be replaced with actual data fetching)
 const sampleProducts = [
-  { id: 1, name: 'Heatwave Havoc', price: '$10.50', description: 'A fiery, heat bomb that is our hottest sauce--guaranteed to bring you tears.', spice: 'Blazing', img: heatwave_havoc },
-  { id: 2, name: 'Chili Charge', price: '$9.70', description: 'A medium level chili-infused sauce that is sure to bring some heat!', spice: 'Hot', img: chili_charge },
-  { id: 3, name: 'Flame Frenzy', price: '$9.70', description: 'A fun, savory hot sauce to make your mouth tingle.', spice: 'Mild', img: flame_frenzy },
-  { id: 4, name: 'Zesty Zing', price: '$10.20', description: 'Our version of sweet and tangy with some ZING!', spice: 'Mild', img: zesty_zing },
-  // { id: 5, name: 'Inferno Elixir', price: '$12.00', description: 'A dangerously spicy elixir for true heat seekers.', spice: 'Extreme', img: 'https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80' },
-  // { id: 6, name: 'Smoky Ember', price: '$8.50', description: 'A smoky, rich sauce with a subtle kick.', spice: 'Medium', img: 'https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80' },
-  // { id: 7, name: 'Garlic Blaze', price: '$11.00', description: 'Garlic-forward with a fiery finish.', spice: 'Hot', img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80' },
-  // { id: 8, name: 'Sweet Heat', price: '$9.00', description: 'Sweet upfront, heat on the back end.', spice: 'Medium', img: 'https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=400&q=80' }
+  {
+    id: 1,
+    name: 'Heatwave Havoc',
+    price: '$10.50',
+    description: 'A fiery, heat bomb that is our hottest sauce--guaranteed to bring you tears.',
+    spice: 'Blazing',
+    img: heatwave_havoc,
+  },
+  {
+    id: 2,
+    name: 'Chili Charge',
+    price: '$9.70',
+    description: 'A medium level chili-infused sauce that is sure to bring some heat!',
+    spice: 'Hot',
+    img: chili_charge,
+  },
+  {
+    id: 3,
+    name: 'Flame Frenzy',
+    price: '$9.70',
+    description: 'A fun, savory hot sauce to make your mouth tingle.',
+    spice: 'Mild',
+    img: flame_frenzy,
+  },
+  {
+    id: 4,
+    name: 'Zesty Zing',
+    price: '$10.20',
+    description: 'Our version of sweet and tangy with some ZING!',
+    spice: 'Mild',
+    img: zesty_zing,
+  },
+  {
+    id: 5,
+    name: 'Spice Surge',
+    price: '$11.00',
+    description: 'An electrifying blend of spices that will awaken your taste buds.',
+    spice: 'Hot',
+    img: zesty_zing, // Change this
+  },
+  {
+    id: 6,
+    name: 'Inferno Infusion',
+    price: '$12.50',
+    description: 'A dangerously addictive sauce with an infernal kick.',
+    spice: 'Blazing',
+    img: zesty_zing, // Change this
+  },
+  {
+    id: 7,
+    name: 'Pepper Pulse',
+    price: '$9.00',
+    description: 'A vibrant peppery sauce that adds a lively pulse to your dishes.',
+    spice: 'Medium',
+    img: zesty_zing, // Change this
+  },
+  {
+    id: 8,
+    name: 'Fiery Fusion',
+    price: '$10.80',
+    description: 'A harmonious fusion of flavors with a fiery finish.',
+    spice: 'Hot',
+    img: zesty_zing, // Change this
+  }
 ];
 
 const ProductsPageComponent = () => {
