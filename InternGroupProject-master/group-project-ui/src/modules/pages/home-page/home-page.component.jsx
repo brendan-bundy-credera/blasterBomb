@@ -3,10 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { retrieveCart } from '../../cart/retrieve-cart/retrieve-cart.slice';
 import { RequestStatus } from '../../common/redux/redux.constants';
 import { Typography, Box } from '@material-ui/core';
-import heatwave_havoc from '../../../assets/heatwave_havoc.png'
-import chili_charge from '../../../assets/chili_charge.png'
-import flame_frenzy from '../../../assets/flame_frenzy.png'
-import zesty_zing from '../../../assets/zesty_zing.png'
+import hotSauces from '../../../data/hotSauces';
 import logo from '../../../assets/blaster_bomb_logo.png'
 // import { styled } from '@mui/system';
 
