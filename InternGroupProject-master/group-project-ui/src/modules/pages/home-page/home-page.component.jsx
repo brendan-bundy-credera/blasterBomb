@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { retrieveCart } from '../../cart/retrieve-cart/retrieve-cart.slice';
 import { RequestStatus } from '../../common/redux/redux.constants';
-import { Typography, Box } from '@material-ui/core';
+import { Typography, Box, Grid } from '@material-ui/core';
 import hotSauces from '../../../data/hotSauces';
 import logo from '../../../assets/blaster_bomb_logo.png'
 // import { styled } from '@mui/system';
@@ -31,26 +31,16 @@ export const HomePageComponent = () => {
     >
       <Box my={4}>
         <Typography
-          variant="h3"
+          variant="h1"
           component="h1"
           style={{
             color: 'var(--main)',
             textAlign: 'center',
-            fontFamily: "'Alumni Sans SC', sans-serif" ,
-            transition: 'font-size 0.2s',
-          }}
-          sx={{
-            fontWeight: 700,
+            fontFamily: "'Bangers', cursive",
+            fontSize: '4.7rem', 
             letterSpacing: '1px',
-            whiteSpace: 'nowrap',
-            fontSize: {
-              xs: '1.2rem', // Smaller on extra small screens
-              sm: '1.7rem',
-              md: '2.5rem',
-              lg: '3rem',
-            },
-            fontFamily: "'Alumni Sans SC', sans-serif" ,
-            transition: 'font-size 0.2s',
+            textShadow: '2px 2px 4px rgba(0,0,0,0.2)',
+            lineHeight: '1.2',
           }}
         >
           Blaster Bomb Hot Sauce
@@ -60,17 +50,10 @@ export const HomePageComponent = () => {
           <img src={logo} alt="Hot Sauce" style={{ width: 180, height: 180, objectFit: 'contain', borderRadius: '12px' }} />
         </Box>
         {/* Product cards */}
-        <Box display="grid" gridTemplateColumns="repeat(2, 1fr)" gap={16} justifyContent="center" sx={{
-            gridTemplateColumns: {
-              xs: '1fr',
-              sm: '1fr',
-              md: 'repeat(2, 1fr)',
-            },
-            gap: 2,
-            px: 2,
-          }} >
+        <Grid container spacing={6} style={{ margin: '0 -12px', width: 'calc(100% + 24px)' }}>
           {hotSauces.map(product => (
-            <Box key={product.id} sx={{
+            <Grid item xs={12} sm={12} md={6} key={product.id}>
+              <Box sx={{
                 background: 'var(--jet)',
                 color: 'var(--timberwolf)',
                 borderRadius: 12,
@@ -90,8 +73,9 @@ export const HomePageComponent = () => {
               <Typography variant="body2" style={{ color: 'var(--main)', fontWeight: 500 }}>Heat Level: {product.spice}</Typography>
               <Typography variant="body1" style={{ fontWeight: 700, margin: '8px 0' }}>{product.price}</Typography>
             </Box>
+            </Grid>
           ))}
-        </Box>
+        </Grid>
       </Box>
     </Box>
   );
