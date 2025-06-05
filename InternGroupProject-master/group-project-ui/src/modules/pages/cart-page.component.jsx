@@ -12,7 +12,7 @@ const getCart = async () => {
         ...item,
         name: product.name,
         price: product.price,
-        img: product.img || product.image_url,
+        img: product.image,
       };
     } catch {
       return item;

@@ -1,12 +1,18 @@
 // Handles product-related business logic
 const Product = require('../models/productModel');
 
+// Helper to build image URL
+function getImageUrl(image) {
+  if (!image) return '';
+  return `/images/${image}`;
+}
+
 // Create a new product
 exports.createProduct = async (req, res, next) => {
   try {
     const { name, description, price, image, spice } = req.body;
     const productId = await Product.create({ name, description, price, image, spice });
-    res.status(201).json({ id: productId, name, description, price, image, spice });
+    res.status(201).json({ id: productId, name, description, price, image: getImageUrl(image), spice });
   } catch (err) {
     next(err);
   }
@@ -16,8 +22,9 @@ exports.createProduct = async (req, res, next) => {
 exports.getAllProducts = async (req, res, next) => {
   try {
     const products = await Product.findAll();
-    console.log('Fetched products:', products); // Logging
-    res.json(products);
+    // Attach image URL for each product
+    const productsWithImageUrl = products.map(p => ({ ...p, image: getImageUrl(p.image) }));
+    res.json(productsWithImageUrl);
   } catch (err) {
     console.error('Error fetching products:', err); // Logging
     next(err);
@@ -28,8 +35,9 @@ exports.getAllProducts = async (req, res, next) => {
 exports.getProduct = async (req, res, next) => {
   try {
     const product = await Product.findById(req.params.id);
-    console.log('Fetched product:', product); // Logging
     if (!product) return res.status(404).json({ message: 'Product not found' });
+    // Attach image URL
+    product.image = getImageUrl(product.image);
     res.json(product);
   } catch (err) {
     console.error('Error fetching product by ID:', err); // Logging

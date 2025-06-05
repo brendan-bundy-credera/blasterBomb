@@ -105,7 +105,7 @@ const ProductsPageComponent = () => {
       {selectedProduct ? (
         <div style={{ textAlign: 'left' }}>
           {/* Product image */}
-          <img src={selectedProduct.img} alt={selectedProduct.name} style={{ width: 220, height: 220, objectFit: 'contain', borderRadius: '12px', marginBottom: 24, border: '4px solid var(--main)' }} />
+          <img src={selectedProduct.image} alt={selectedProduct.name} style={{ width: 220, height: 220, objectFit: 'contain', borderRadius: '12px', marginBottom: 24, border: '4px solid var(--main)' }} />
           <h2 style={{ color: 'var(--main)' }}>{selectedProduct.name}</h2>
           <p>{selectedProduct.description}</p>
           <p><b>Price:</b> {selectedProduct.price}</p>
@@ -122,7 +122,7 @@ const ProductsPageComponent = () => {
           {filteredProducts.map(product => (
             <li key={product.id} onClick={() => handleProductClick(product)} style={{ display: 'flex', alignItems: 'center', gap: '1em' }}>
               {/* Product thumbnail */}
-              <img src={product.img} alt={product.name} style={{ background: 'var(--timberwolf)', width: 64, height: 64, objectFit: 'contain', borderRadius: '8px', border: '2px solid var(--main)' }} />
+              <img src={product.image} alt={product.name} style={{ background: 'var(--timberwolf)', width: 64, height: 64, objectFit: 'contain', borderRadius: '8px', border: '2px solid var(--main)' }} />
               <span style={{ flex: 1 }}>{product.name} - {product.price}</span>
             </li>
           ))}

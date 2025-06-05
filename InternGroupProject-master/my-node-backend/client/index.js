@@ -1,13 +1,13 @@
 require('dotenv').config();
 
 const express = require('express');
-const apiRoutes = require('./routes/api');
+const apiRoutes = require('../src/routes/api');
 const path = require('path');
 
-const productRoutes = require('./routes/productRoutes');
-const cartRoutes = require('./routes/cartRoutes');
-const orderRoutes = require('./routes/orderRoutes');
-const userRoutes = require('./routes/userRoutes');
+const productRoutes = require('../src/routes/productRoutes');
+const cartRoutes = require('../src/routes/cartRoutes');
+const orderRoutes = require('../src/routes/orderRoutes');
+const userRoutes = require('../src/routes/userRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
