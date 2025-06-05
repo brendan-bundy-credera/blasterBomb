@@ -15,9 +15,8 @@ const TestComp = () => (
 // Config for root routes to easily add/omit routes
 // NOTE: Including linkText property will include route in navigation menu; omit this property for routes which shouldn't be in navigation
 // NOTE: You may need to update this config with more properties and map to the RootLayout if more complex routes are required
-export const routes = [
-  { path: '/products', linkText: 'Products', routeComponent: ProductsPageComponent, exact: true },
-  { path: '/cart', linkText: 'Cart', routeComponent: CartPage, exact: true },
+export const routes = [  { path: '/products', linkText: 'Products', routeComponent: ProductsPageComponent, exact: true },
+  { path: '/cart', routeComponent: CartPage, exact: true },
   { path: '/checkout', routeComponent: CheckoutPage, exact: true },
   { path: '/confirmation', routeComponent: ConfirmationPage, exact: true },
   // Currently a fallback route which will match if any routes above are not exactly matched
