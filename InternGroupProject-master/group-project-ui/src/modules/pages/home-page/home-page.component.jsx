@@ -62,6 +62,38 @@ export const HomePageComponent = () => {
               spice: 'Mild',
               img: zesty_zing,
             },
+            {
+              id: 5,
+              name: 'Spice Surge',
+              price: '$11.00',
+              description: 'An electrifying blend of spices that will awaken your taste buds.',
+              spice: 'Hot',
+              img: zesty_zing, // Change this
+            },
+            {
+              id: 6,
+              name: 'Inferno Infusion',
+              price: '$12.50',
+              description: 'A dangerously addictive sauce with an infernal kick.',
+              spice: 'Blazing',
+              img: zesty_zing, // Change this
+            },
+            {
+              id: 7,
+              name: 'Pepper Pulse',
+              price: '$9.00',
+              description: 'A vibrant peppery sauce that adds a lively pulse to your dishes.',
+              spice: 'Medium',
+              img: zesty_zing, // Change this
+            },
+            {
+              id: 8,
+              name: 'Fiery Fusion',
+              price: '$10.80',
+              description: 'A harmonious fusion of flavors with a fiery finish.',
+              spice: 'Hot',
+              img: zesty_zing, // Change this
+            }
           ].map(product => (
             <Box key={product.id} style={{ background: 'var(--jet)', color: 'var(--timberwolf)', borderRadius: 12, margin: 8, width: 420, boxShadow: '0 2px 8px rgba(43,44,40,0.08)', padding: 16, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <img src={product.img} alt={product.name} style={{ background: 'var(--timberwolf', width: 240, height: 240, objectFit: 'contain', borderRadius: 8, marginBottom: 12, border: '2px solid var(--main)' }} />
