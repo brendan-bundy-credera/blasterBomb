@@ -62,7 +62,7 @@ export const HomePageComponent = () => {
                   md: '0 4px 16px rgba(43,44,40,0.15)',
                 },
               }}>
-              <img src={product.img} alt={product.name} style={{ background: 'var(--timberwolf)', width: 240, height: 240, objectFit: 'contain', borderRadius: 8, marginBottom: 12, border: '2px solid var(--main)' }} />
+                <img src={product.image} alt={product.name} style={{ background: 'var(--timberwolf', width: 240, height: 240, objectFit: 'contain', borderRadius: 8, marginBottom: 12, border: '2px solid var(--main)' }} />
               <Typography variant="h6" style={{ color: 'var(--main)', fontWeight: 600 }}>{product.name}</Typography>
               <Typography variant="body2" style={{ margin: '8px 0', minHeight: 40 }}>{product.description}</Typography>
               {product.spice && <Typography variant="body2" style={{ color: 'var(--main)', fontWeight: 500 }}>Heat Level: {product.spice}</Typography>}
