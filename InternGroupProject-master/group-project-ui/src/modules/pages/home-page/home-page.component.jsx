@@ -1,19 +1,14 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { retrieveCart } from '../../cart/retrieve-cart/retrieve-cart.slice';
-import { RequestStatus } from '../../common/redux/redux.constants';
+import React, { useEffect, useState } from 'react';
 import { Typography, Box, Grid } from '@material-ui/core';
-import hotSauces from '../../../data/hotSauces';
-import logo from '../../../assets/blaster_bomb_logo.png'
+import { fetchAllProducts } from '../../products/product.service';
 // import { styled } from '@mui/system';
 
 export const HomePageComponent = () => {
-  const dispatch = useDispatch();
-  const retrieveCartState = useSelector(state => state.cart.retrieveCart);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    dispatch(retrieveCart(1));
-  }, [dispatch]); 
+    fetchAllProducts().then(setProducts);
+  }, []);
 
   return (
     // dynamic box shadow wrapper, matching products page
@@ -47,11 +42,11 @@ export const HomePageComponent = () => {
         </Typography>
         {/* Image placeholder */}
         <Box display="flex" justifyContent="center" my={2}>
-          <img src={logo} alt="Hot Sauce" style={{ width: 180, height: 180, objectFit: 'contain', borderRadius: '12px' }} />
+          <img src={process.env.PUBLIC_URL + '/blaster_bomb_logo.png'} alt="Hot Sauce" style={{ width: 180, height: 180, objectFit: 'contain', borderRadius: '12px' }} />
         </Box>
         {/* Product cards */}
         <Grid container spacing={6} style={{ margin: '0 -12px', width: 'calc(100% + 24px)' }}>
-          {hotSauces.map(product => (
+          {(Array.isArray(products) ? products : []).map(product => (
             <Grid item xs={12} sm={12} md={6} key={product.id}>
               <Box sx={{
                 background: 'var(--jet)',
@@ -67,10 +62,10 @@ export const HomePageComponent = () => {
                   md: '0 4px 16px rgba(43,44,40,0.15)',
                 },
               }}>
-              <img src={product.img} alt={product.name} style={{ background: 'var(--timberwolf)', width: 240, height: 240, objectFit: 'contain', borderRadius: 8, marginBottom: 12, border: '2px solid var(--main)' }} />
+                <img src={product.image} alt={product.name} style={{ background: 'var(--timberwolf', width: 240, height: 240, objectFit: 'contain', borderRadius: 8, marginBottom: 12, border: '2px solid var(--main)' }} />
               <Typography variant="h6" style={{ color: 'var(--main)', fontWeight: 600 }}>{product.name}</Typography>
               <Typography variant="body2" style={{ margin: '8px 0', minHeight: 40 }}>{product.description}</Typography>
-              <Typography variant="body2" style={{ color: 'var(--main)', fontWeight: 500 }}>Heat Level: {product.spice}</Typography>
+              {product.spice && <Typography variant="body2" style={{ color: 'var(--main)', fontWeight: 500 }}>Heat Level: {product.spice}</Typography>}
               <Typography variant="body1" style={{ fontWeight: 700, margin: '8px 0' }}>{product.price}</Typography>
             </Box>
             </Grid>
