@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const getCart = () => {
   return JSON.parse(localStorage.getItem('cart')) || [];
@@ -8,8 +9,9 @@ const setCart = (cart) => {
   localStorage.setItem('cart', JSON.stringify(cart));
 };
 
-const CartPage = ({ onCheckout }) => {
+const CartPage = () => {
   const [cart, setCartState] = useState(getCart());
+  const history = useHistory();
 
   const updateQuantity = (id, delta) => {
     const updated = cart.map(item =>
@@ -62,10 +64,23 @@ const CartPage = ({ onCheckout }) => {
       )}
       <div style={{ textAlign: 'right', marginTop: '1em', fontWeight: 700 }}>
         Total: <span style={{ color: 'var(--main)' }}>${total.toFixed(2)}</span>
-      </div>
-      {cart.length > 0 && (
+      </div>      {cart.length > 0 && (
         <div style={{ textAlign: 'right', marginTop: '2em' }}>
-          <button onClick={onCheckout}>Proceed to Checkout</button>
+          <button 
+            onClick={() => history.push('/checkout')}
+            style={{ 
+              background: 'var(--main)',
+              color: 'white',
+              padding: '1em 2em',
+              border: 'none',
+              borderRadius: '8px',
+              cursor: 'pointer',
+              fontSize: '1em',
+              fontWeight: 'bold'
+            }}
+          >
+            Proceed to Checkout
+          </button>
         </div>
       )}
     </div>
