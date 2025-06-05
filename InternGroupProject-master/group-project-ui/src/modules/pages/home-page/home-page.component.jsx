@@ -60,51 +60,17 @@ export const HomePageComponent = () => {
           <img src={logo} alt="Hot Sauce" style={{ width: 180, height: 180, objectFit: 'contain', borderRadius: '12px' }} />
         </Box>
         {/* Product cards */}
-        <Box display="grid" gridTemplateColumns="repeat(2, 1fr)" gap={16} justifyContent="center" style={{ paddingLeft: '16px', paddingRight: '16px' }}  sx={{
+        <Box display="grid" gridTemplateColumns="repeat(2, 1fr)" gap={16} justifyContent="center" sx={{
             gridTemplateColumns: {
-              xs: '1fr', // Single column on small screens
+              xs: '1fr',
               sm: '1fr',
-              md: 'repeat(2, 1fr)', // Two columns on medium screens and above
+              md: 'repeat(2, 1fr)',
             },
             gap: 2,
-            paddingLeft: '16px',
-            paddingRight: '16px',
+            px: 2,
           }} >
-          { [
-            {
-              id: 1,
-              name: 'Heatwave Havoc',
-              price: '$10.50',
-              description: 'A fiery, heat bomb that is our hottest sauce--guaranteed to bring you tears.',
-              spice: 'Blazing',
-              img: heatwave_havoc,
-            },
-            {
-              id: 2,
-              name: 'Chili Charge',
-              price: '$9.70',
-              description: 'A medium level chili-infused sauce that is sure to bring some heat!',
-              spice: 'Hot',
-              img: chili_charge,
-            },
-            {
-              id: 3,
-              name: 'Flame Frenzy',
-              price: '$9.70',
-              description: 'A fun, savory hot sauce to make your mouth tingle.',
-              spice: 'Mild',
-              img: flame_frenzy,
-            },
-            {
-              id: 4,
-              name: 'Zesty Zing',
-              price: '$10.20',
-              description: 'Our version of sweet and tangy with some ZING!',
-              spice: 'Mild',
-              img: zesty_zing,
-            },
-          ].map(product => (
-            <Box key={product.id}  sx={{
+          {hotSauces.map(product => (
+            <Box key={product.id} sx={{
                 background: 'var(--jet)',
                 color: 'var(--timberwolf)',
                 borderRadius: 12,
@@ -114,11 +80,11 @@ export const HomePageComponent = () => {
                 flexDirection: 'column',
                 alignItems: 'center',
                 boxShadow: {
-                  xs: '0 2px 8px rgba(43,44,40,0.08)', // original shadow for single column
-                  md: '0 4px 16px rgba(43,44,40,0.15)', // wider shadow for two columns
+                  xs: '0 2px 8px rgba(43,44,40,0.08)',
+                  md: '0 4px 16px rgba(43,44,40,0.15)',
                 },
               }}>
-              <img src={product.img} alt={product.name} style={{ background: 'var(--timberwolf', width: 240, height: 240, objectFit: 'contain', borderRadius: 8, marginBottom: 12, border: '2px solid var(--main)' }} />
+              <img src={product.img} alt={product.name} style={{ background: 'var(--timberwolf)', width: 240, height: 240, objectFit: 'contain', borderRadius: 8, marginBottom: 12, border: '2px solid var(--main)' }} />
               <Typography variant="h6" style={{ color: 'var(--main)', fontWeight: 600 }}>{product.name}</Typography>
               <Typography variant="body2" style={{ margin: '8px 0', minHeight: 40 }}>{product.description}</Typography>
               <Typography variant="body2" style={{ color: 'var(--main)', fontWeight: 500 }}>Heat Level: {product.spice}</Typography>
