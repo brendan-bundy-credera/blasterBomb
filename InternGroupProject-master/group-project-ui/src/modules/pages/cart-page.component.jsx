@@ -1,8 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { fetchProductById } from '../products/product.service';
 
-const getCart = () => {
-  return JSON.parse(localStorage.getItem('cart')) || [];
+const getCart = async () => {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  // Fetch latest product info for each item
+  const updatedCart = await Promise.all(cart.map(async item => {
+    try {
+      const product = await fetchProductById(item.id);
+      return {
+        ...item,
+        name: product.name,
+        price: product.price,
+        img: product.img || product.image_url,
+      };
+    } catch {
+      return item;
+    }
+  }));
+  return updatedCart;
 };
 
 const setCart = (cart) => {
@@ -10,8 +26,12 @@ const setCart = (cart) => {
 };
 
 const CartPage = () => {
-  const [cart, setCartState] = useState(getCart());
+  const [cart, setCartState] = useState([]);
   const history = useHistory();
+
+  useEffect(() => {
+    getCart().then(setCartState);
+  }, []);
 
   const updateQuantity = (id, delta) => {
     const updated = cart.map(item =>

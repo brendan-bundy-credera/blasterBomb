@@ -6,7 +6,5 @@ router.get('/example', (req, res) => {
     res.json({ message: 'This is an example response' });
 });
 
-// Export the function to set up routes
-module.exports = (app) => {
-    app.use('/api', router);
-};
+// Export the router
+module.exports = router;

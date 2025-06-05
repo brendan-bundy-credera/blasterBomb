@@ -27,6 +27,7 @@
     "eject": "react-scripts eject",
     "build-and-copy": "npm run build && xcopy /E /I /Y build ..\\my-node-backend\\client"
   },
+  "proxy": "http://localhost:5000",
   "eslintConfig": {
     "extends": [
       "react-app",

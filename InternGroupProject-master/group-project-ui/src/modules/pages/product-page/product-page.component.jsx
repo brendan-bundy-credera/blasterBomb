@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import hotSauces from '../../../data/hotSauces';
+import { fetchAllProducts } from '../../products/product.service';
 
 // Simple notification at bottom
 const BottomNotification = ({ message, isVisible }) => {
@@ -39,14 +39,17 @@ const useNotification = () => {
   return { notification, showNotification };
 };
 
-// Placeholder data for products (can be replaced with actual data fetching)
-const sampleProducts = hotSauces;
-
 const ProductsPageComponent = () => {
   const { notification, showNotification } = useNotification();
   
   useEffect(() => {
     console.log("ProductsPageComponent mounted");
+    fetchAllProducts().then(data => {
+      console.log('Fetched products in ProductsPageComponent:', data);
+      setProducts(data);
+    }).catch(err => {
+      console.error('Error fetching products in ProductsPageComponent:', err);
+    });
   }, []);
   
   const [products, setProducts] = useState([]);
@@ -55,15 +58,16 @@ const ProductsPageComponent = () => {
   const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
-    // Simulate data fetching
-    setProducts(sampleProducts);
+    fetchAllProducts().then(setProducts);
   }, []);
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   }
 
-  const filteredProducts = products.filter(product => 
+  // Defensive: ensure products is always an array
+  console.log('Products state before filter:', products);
+  const filteredProducts = (Array.isArray(products) ? products : []).filter(product => 
     product.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 

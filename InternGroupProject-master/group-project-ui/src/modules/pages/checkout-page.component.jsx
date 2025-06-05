@@ -1,7 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { fetchProductById } from '../products/product.service';
 
-const getCart = () => JSON.parse(localStorage.getItem('cart')) || [];
+const getCart = async () => {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  // Fetch latest product info for each item
+  const updatedCart = await Promise.all(cart.map(async item => {
+    try {
+      const product = await fetchProductById(item.id);
+      return {
+        ...item,
+        name: product.name,
+        price: product.price,
+        img: product.img || product.image_url,
+      };
+    } catch {
+      return item;
+    }
+  }));
+  return updatedCart;
+};
 const clearCart = () => localStorage.removeItem('cart');
 
 const CheckoutPage = ({ onOrderComplete }) => {
@@ -18,7 +36,7 @@ const CheckoutPage = ({ onOrderComplete }) => {
     cvv: ''
   });
   const [error, setError] = useState({});
-  const cart = getCart();
+  const [cart, setCart] = useState([]);
   const subtotal = cart.reduce((sum, item) => sum + (parseFloat(item.price.replace('$','')) * (item.quantity || 1)), 0);
   const shipping = 5.99;
   const tax = subtotal * 0.08; // 8% tax
@@ -132,6 +150,10 @@ const CheckoutPage = ({ onOrderComplete }) => {
     // Navigate to confirmation page after order is complete
     history.push('/confirmation');
   };
+
+  useEffect(() => {
+    getCart().then(setCart);
+  }, []);
 
   return (
     <div style={{ maxWidth: 500, margin: '2em auto', background: 'var(--timberwolf)', borderRadius: '16px', boxShadow: '0 4px 24px rgba(43,44,40,0.08)', padding: '2em' }}>
