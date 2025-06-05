@@ -37,6 +37,7 @@ export const HomePageComponent = () => {
   //   },
   // }));
   return (
+    // dynamic box shadow 
     <Container maxWidth="sm" style={{ background: 'var(--timberwolf)', borderRadius: '16px', boxShadow: '0 4px 24px rgba(43,44,40,0.08)', padding: '2em', marginTop: '2em' }}>
       <Box my={4}>
         <Typography variant="h3" component="h1" style={{ color: 'var(--main)', fontWeight: 700, letterSpacing: '1px', textAlign: 'center', whiteSpace: 'nowrap' }}
@@ -100,7 +101,20 @@ export const HomePageComponent = () => {
               img: zesty_zing,
             },
           ].map(product => (
-            <Box key={product.id} style={{ background: 'var(--jet)', color: 'var(--timberwolf)', borderRadius: 12, margin: 8, width: 420, boxShadow: '0 2px 8px rgba(43,44,40,0.08)', padding: 16, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <Box key={product.id}  sx={{
+                background: 'var(--jet)',
+                color: 'var(--timberwolf)',
+                borderRadius: 12,
+                margin: 1,
+                padding: 2,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                boxShadow: {
+                  xs: '0 2px 8px rgba(43,44,40,0.08)', // original shadow for single column
+                  md: '0 4px 16px rgba(43,44,40,0.15)', // wider shadow for two columns
+                },
+              }}>
               <img src={product.img} alt={product.name} style={{ background: 'var(--timberwolf', width: 240, height: 240, objectFit: 'contain', borderRadius: 8, marginBottom: 12, border: '2px solid var(--main)' }} />
               <Typography variant="h6" style={{ color: 'var(--main)', fontWeight: 600 }}>{product.name}</Typography>
               <Typography variant="body2" style={{ margin: '8px 0', minHeight: 40 }}>{product.description}</Typography>
