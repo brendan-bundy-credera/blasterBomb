@@ -1,2 +1,4 @@
 *package-lock.json
+.env
+InternGroupProject-master\my-node-backend\.env
 *.env
