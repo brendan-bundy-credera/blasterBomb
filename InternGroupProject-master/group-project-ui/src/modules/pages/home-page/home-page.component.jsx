@@ -3,43 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { retrieveCart } from '../../cart/retrieve-cart/retrieve-cart.slice';
 import { RequestStatus } from '../../common/redux/redux.constants';
 import { Typography, Container, Box } from '@material-ui/core';
-const logo = process.env.PUBLIC_URL + '/blaster_bomb_logo.png';
-
-// Use public folder images
-const productList = [
-  {
-    id: 1,
-    name: 'Heatwave Havoc',
-    price: '$10.50',
-    description: 'A fiery, heat bomb that is our hottest sauce--guaranteed to bring you tears.',
-    spice: 'Blazing',
-    img: process.env.PUBLIC_URL + '/heatwave_havoc.png',
-  },
-  {
-    id: 2,
-    name: 'Chili Charge',
-    price: '$9.70',
-    description: 'A medium level chili-infused sauce that is sure to bring some heat!',
-    spice: 'Hot',
-    img: process.env.PUBLIC_URL + '/chili_charge.png',
-  },
-  {
-    id: 3,
-    name: 'Flame Frenzy',
-    price: '$9.70',
-    description: 'A fun, savory hot sauce to make your mouth tingle.',
-    spice: 'Mild',
-    img: process.env.PUBLIC_URL + '/flame_frenzy.png',
-  },
-  {
-    id: 4,
-    name: 'Zesty Zing',
-    price: '$10.20',
-    description: 'Our version of sweet and tangy with some ZING!',
-    spice: 'Mild',
-    img: process.env.PUBLIC_URL + '/zesty_zing.png',
-  },
-];
+import hotSauces from '../../../data/hotSauces';
+import logo from '../../../assets/blaster_bomb_logo.png'
 
 export const HomePageComponent = () => {
   const dispatch = useDispatch();
@@ -61,7 +26,7 @@ export const HomePageComponent = () => {
         </Box>
         {/* Product cards */}
         <Box display="flex" flexWrap="wrap" justifyContent="center" style={{ gap: 16 }}>
-          {productList.map(product => (
+          { hotSauces.map(product => (
             <Box key={product.id} style={{ background: 'var(--jet)', color: 'var(--timberwolf)', borderRadius: 12, margin: 8, width: 420, boxShadow: '0 2px 8px rgba(43,44,40,0.08)', padding: 16, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <img src={product.img} alt={product.name} style={{ background: 'var(--timberwolf', width: 240, height: 240, objectFit: 'contain', borderRadius: 8, marginBottom: 12, border: '2px solid var(--main)' }} />
               <Typography variant="h6" style={{ color: 'var(--main)', fontWeight: 600 }}>{product.name}</Typography>
