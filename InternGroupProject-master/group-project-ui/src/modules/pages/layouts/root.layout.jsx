@@ -4,6 +4,7 @@ import { Typography, Container, Box } from '@material-ui/core';
 import rootRoutes from '../pages.config';
 import './root.layout.css'; // Import the CSS file
 import logo from '../../../assets/blaster_bomb_logo.png'
+import CartIconWithBadge from '../../cart/CartIconWithBadge';
 
 // State for order and navigation
 export const RootLayout = () => {
@@ -24,6 +25,9 @@ export const RootLayout = () => {
             </Link>
           ))}
         </ul>
+        <Link to="/cart" style={{ textDecoration: 'none', marginLeft: '2em' }}>
+          <CartIconWithBadge />
+        </Link>
       </nav>
       <Switch>
         {rootRoutes.map((route, index) => {
